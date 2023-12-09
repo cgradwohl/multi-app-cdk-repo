@@ -6,6 +6,12 @@
   },
   "scripts": {
     "build": "tsc",
+    "build:app-1": "npx tsc -noEmit && npx esbuild --bundle --platform=node src/apps/app-1/index.ts --outdir=dist/app-1",
+    "build:app-2": "npx tsc -noEmit && npx esbuild --bundle --platform=node src/apps/app-2/index.ts --outdir=dist/app-2",
+    "synth:app-1": "npx cdk synth -a dist/app-1/index.js -o cloud-assembly/app-1",
+    "synth:app-2": "npx cdk synth -a dist/app-2/index.js -o cloud-assembly/app-2",
+    "deploy:app-1": "npx cdk deploy -a dist/app-1/index.js -o cloud-assembly/app-1",
+    "deploy:app-2": "npx cdk deploy -a dist/app-2/index.js -o cloud-assembly/app-2",
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk"
